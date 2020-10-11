@@ -1,6 +1,7 @@
 const opdracht = {
     stock: 10,
     coins: 10,
+    orders: [],
     buyStock: (amount) => {
         if(opdracht.coins < amount){
             return false;
@@ -41,6 +42,22 @@ const opdracht = {
         opdracht.coins -= amount;
         return opdracht.coins
     },
+    addOrder: (amount) => {
+        opdracht.orders.push(amount);
+        return opdracht.orders;
+    },
+    deleteOrder: (orderNumber) => {
+        opdracht.orders = opdracht.orders.filter(p => p !== orderNumber);
+        return opdracht.orders;
+    },
+    processOrder: (orderNumber) => {
+        if(opdracht.orders.find(p => p===orderNumber)){
+            opdracht.sellStock(orderNumber);
+            opdracht.deleteOrder(orderNumber);
+        }else{
+            return false;
+        }
+    }
 };
 
 module.exports = opdracht;

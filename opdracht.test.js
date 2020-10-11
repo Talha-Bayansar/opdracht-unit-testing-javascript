@@ -21,16 +21,12 @@ test("promotion not possible", () => {
     expect(opdracht.promotion()).toBe(false);
 });
 
-test("buying stocks", () => {
-    expect(opdracht.buyStock(10)).toBe(10);
-    expect(opdracht.coins).toBe(10);
-});
-
 test("more orders then stock", () => {
     expect(opdracht.sellStock(50)).toBe(false);
 });
 
 test("renewing stocks when not empty", () => {
+    opdracht.buyStock(10);
     expect(opdracht.renewStock()).toBe(false);
 });
 
@@ -58,4 +54,24 @@ test("subtract coins", () => {
 test("subtracting negative number of coins is not possible", () => {
     expect(opdracht.addCoins(-10)).toBe(false);
     expect(opdracht.coins).toBe(15);
+});
+
+test('getting a new order', () => {
+    expect(opdracht.addOrder(5)).toEqual([5]);
+});
+
+test('finishing an order', () => {
+    expect(opdracht.deleteOrder(5)).toEqual([]);
+});
+
+test('process an order', () => {
+    opdracht.addOrder(5);
+    opdracht.processOrder(5);
+    expect(opdracht.stock).toBe(10);
+    expect(opdracht.coins).toBe(20);
+});
+
+test('processing a non existing order', () => {
+    opdracht.addOrder(10);
+    expect(opdracht.processOrder(5)).toBe(false);
 });
