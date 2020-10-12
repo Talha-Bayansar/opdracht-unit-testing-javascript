@@ -102,11 +102,17 @@ test('processing all the orders', () => {
 test('process all orders when you do not have enough stock', () => {
     opdracht.buyStock(20);
     opdracht.addMultipleOrders([10, 20]);
-    
     opdracht.processAllOrders();
-    console.log(opdracht.coins);
-    console.log(opdracht.stock);
-    console.log(opdracht.orders);
-    console.log(opdracht.orders);
     expect(opdracht.orders).toEqual([10, 20]);
 });
+
+test('order all orders from low to high', () => {
+    opdracht.addOrder(5);
+    opdracht.sortOrders();
+    expect(opdracht.orders).toEqual([5, 10, 20]);
+});
+
+// test('process all possible orders', () => {
+//     opdracht.processAllPossibleOrders();
+//     expect(opdracht.orders).toEqual([20]);
+// });

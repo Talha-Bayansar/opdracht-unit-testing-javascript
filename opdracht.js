@@ -78,6 +78,9 @@ const opdracht = {
         }else{
             opdracht.orders.forEach(o => {opdracht.processOrder(o);});
         }
+    },
+    sortOrders: () => {
+        opdracht.orders.sort((a, b) => a - b);
     }
 };
 
