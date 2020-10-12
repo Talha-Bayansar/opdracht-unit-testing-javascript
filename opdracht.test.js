@@ -85,3 +85,16 @@ test('getting multiple orders in a wrong format', () => {
     expect(opdracht.addMultipleOrders([-5])).toBe(false);
     expect(opdracht.addMultipleOrders([])).toBe(false);
 });
+
+test('delete all available orders', () => {
+    expect(opdracht.deleteAllOrders()).toEqual([]);
+    expect(opdracht.orders).toEqual([]);
+});
+
+test('processing all the orders', () => {
+    opdracht.addCoins(10);
+    opdracht.buyStock(30);
+    opdracht.addMultipleOrders([3, 5, 2, 10, 20]);
+    opdracht.processAllOrders();
+    expect(opdracht.orders).toEqual([]);
+});

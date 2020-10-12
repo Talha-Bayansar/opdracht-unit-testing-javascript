@@ -68,7 +68,12 @@ const opdracht = {
             array.forEach(e => opdracht.orders.push(e));
             return opdracht.orders;
         }
-        
+    },
+    deleteAllOrders: () => {
+        return opdracht.orders = [];
+    },
+    processAllOrders: () => {
+        opdracht.orders.forEach(o => opdracht.processOrder(o));
     }
 };
 
