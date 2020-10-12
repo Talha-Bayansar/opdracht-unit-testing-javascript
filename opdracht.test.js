@@ -79,3 +79,9 @@ test('processing a non existing order', () => {
 test('getting multiple orders', () => {
     expect(opdracht.addMultipleOrders([3, 7, 10])).toEqual([10, 3, 7, 10]);
 });
+
+test('getting multiple orders in a wrong format', () => {
+    expect(opdracht.addMultipleOrders([0])).toEqual(false);
+    expect(opdracht.addMultipleOrders([-5])).toBe(false);
+    expect(opdracht.addMultipleOrders([])).toBe(false);
+});

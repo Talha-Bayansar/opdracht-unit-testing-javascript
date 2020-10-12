@@ -59,10 +59,16 @@ const opdracht = {
         }
     },
     addMultipleOrders: (array) => {
-        console.log(opdracht.orders);
-        array.forEach(e => opdracht.orders.push(e));
-        console.log(opdracht.orders);
-        return opdracht.orders;
+        if(array.length === 0){
+            return false;
+        }
+        if(array.find(e => e <= 0) <= 0){
+            return false;
+        }else{
+            array.forEach(e => opdracht.orders.push(e));
+            return opdracht.orders;
+        }
+        
     }
 };
 
