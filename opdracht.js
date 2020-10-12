@@ -73,7 +73,11 @@ const opdracht = {
         return opdracht.orders = [];
     },
     processAllOrders: () => {
-        opdracht.orders.forEach(o => opdracht.processOrder(o));
+        if(opdracht.orders.reduce((total, e) => total += e, 0) > opdracht.stock){
+            return;
+        }else{
+            opdracht.orders.forEach(o => {opdracht.processOrder(o);});
+        }
     }
 };
 

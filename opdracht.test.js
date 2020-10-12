@@ -98,3 +98,15 @@ test('processing all the orders', () => {
     opdracht.processAllOrders();
     expect(opdracht.orders).toEqual([]);
 });
+
+test('process all orders when you do not have enough stock', () => {
+    opdracht.buyStock(20);
+    opdracht.addMultipleOrders([10, 20]);
+    
+    opdracht.processAllOrders();
+    console.log(opdracht.coins);
+    console.log(opdracht.stock);
+    console.log(opdracht.orders);
+    console.log(opdracht.orders);
+    expect(opdracht.orders).toEqual([10, 20]);
+});
