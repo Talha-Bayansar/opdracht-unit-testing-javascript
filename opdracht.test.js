@@ -75,3 +75,7 @@ test('processing a non existing order', () => {
     opdracht.addOrder(10);
     expect(opdracht.processOrder(5)).toBe(false);
 });
+
+test('getting multiple orders', () => {
+    expect(opdracht.addMultipleOrders([3, 7, 10])).toEqual([10, 3, 7, 10]);
+});

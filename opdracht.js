@@ -57,6 +57,12 @@ const opdracht = {
         }else{
             return false;
         }
+    },
+    addMultipleOrders: (array) => {
+        console.log(opdracht.orders);
+        array.forEach(e => opdracht.orders.push(e));
+        console.log(opdracht.orders);
+        return opdracht.orders;
     }
 };
 
