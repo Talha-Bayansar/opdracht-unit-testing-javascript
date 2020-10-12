@@ -112,7 +112,20 @@ test('order all orders from low to high', () => {
     expect(opdracht.orders).toEqual([5, 10, 20]);
 });
 
-// test('process all possible orders', () => {
-//     opdracht.processAllPossibleOrders();
-//     expect(opdracht.orders).toEqual([20]);
-// });
+test('process all possible orders', () => {
+    opdracht.processAllPossibleOrders();
+    expect(opdracht.stock).toEqual(5);
+    expect(opdracht.orders).toEqual([20]);
+});
+
+test('maximize stock depending on your coins', () => {
+    //coins: 35, stock: 5, orders: [20]
+    opdracht.maximizeStock();
+    expect(opdracht.coins).toEqual(0);
+    expect(opdracht.stock).toEqual(40);
+});
+
+test('process all possible orders with not sorted array', () => {
+    //coins: 0, stock: 40, orders: [20]
+    
+});

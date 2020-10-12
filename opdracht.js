@@ -81,6 +81,15 @@ const opdracht = {
     },
     sortOrders: () => {
         opdracht.orders.sort((a, b) => a - b);
+    },
+    processAllPossibleOrders: () => {
+        opdracht.sortOrders();
+        while(opdracht.stock >= opdracht.orders[0]){
+            opdracht.processOrder(opdracht.orders[0]);
+        }
+    },
+    maximizeStock: () => {
+        opdracht.buyStock(opdracht.coins);
     }
 };
 
