@@ -127,5 +127,8 @@ test('maximize stock depending on your coins', () => {
 
 test('process all possible orders with not sorted array', () => {
     //coins: 0, stock: 40, orders: [20]
-    
+    opdracht.addMultipleOrders([100, 5, 50, 3, 10, 2]);
+    console.log(opdracht.orders);
+    opdracht.processAllPossibleOrders();
+    expect(opdracht.orders).toEqual([50, 100]);
 });
